@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import InputForm from "../../ui/textfield";
-import ButtonSubmit from "../button";
+import ButtonSubmit from "../../ui/button";
 import "./styles.css";
 import axios from "axios";
 
