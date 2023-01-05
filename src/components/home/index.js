@@ -18,16 +18,25 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Bienvenue sur la page d'accueil</h1>
-      <InputForm label={"Email"} type={"email"} onChange={handleEmail} />
-      <InputForm
-        label={"Password"}
-        type={"password"}
-        onChange={handlePassword}
-      />
-      <ButtonSubmit onClick={handleClick} value={"Envoyer"} />
-    </div>
+      <div className="background-image">
+        <h1>Welcome</h1>
+        <div className="container-form">
+        <InputForm
+          label={"Email"}
+          type={"email"}
+          onChange={handleEmail}
+          color={"warning"}
+          fullWidth="true"
+        />
+        <InputForm
+          label={"Password"}
+          type={"password"}
+          onChange={handlePassword}
+          color={"warning"}
+        />
+        <ButtonSubmit onClick={handleClick} value={"Envoyer"} />
+        </div>
+      </div>
   );
 };
 
