@@ -26,13 +26,14 @@ const Home = () => {
           type={"email"}
           onChange={handleEmail}
           color={"warning"}
-          fullWidth="true"
+          fullWidth
         />
         <InputForm
           label={"Password"}
           type={"password"}
           onChange={handlePassword}
           color={"warning"}
+          fullWidth
         />
         <ButtonSubmit onClick={handleClick} value={"Envoyer"} />
         </div>
