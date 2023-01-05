@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import InputForm from "../login";
+import InputForm from "../textfield";
 import ButtonSubmit from "../button";
 import "./styles.css";
+import axios from "axios";
 
 const Home = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [passwordHash, setPassword] = useState("");
+  const [user, setUser] = useState();
+  const [message, setMessage] = useState();
 
   const handleEmail = (evt) => {
     setEmail(evt.target.value);
@@ -13,8 +16,25 @@ const Home = () => {
   const handlePassword = (evt) => {
     setPassword(evt.target.value);
   };
-  const handleClick = () => {
-    console.log(email, password);
+  const handleLogin = async () => {
+    try {
+      const result = await axios.post('http://localhost:8000/api/auth', {email, passwordHash});
+      setUser(result.data.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+    if(user){
+      setMessage("Vous êtes connecté");
+      setTimeout(() => {
+        setMessage('');
+      }, 5000)
+    }else {
+      setMessage("Email et/ou Password invalide");
+      setTimeout(() => {
+        setMessage('');
+      }, 5000)
+    }
+    console.log(user);
   };
 
   return (
@@ -26,20 +46,21 @@ const Home = () => {
           type={"email"}
           onChange={handleEmail}
           color={"error"}
-          fullWidth
           autoComplete='true'
           variant={'standard'}
+          fullWidth
         />
         <InputForm
           label={"Password"}
           type={"password"}
           onChange={handlePassword}
           color={"error"}
-          fullWidth
           autoComplete='true'
           variant={'standard'}
+          fullWidth
         />
-        <ButtonSubmit onClick={handleClick} value={"Envoyer"} />
+        <ButtonSubmit onClick={handleLogin} value={"Envoyer"} />
+        {message && <p>{message}</p>}
         </div>
       </div>
   );
