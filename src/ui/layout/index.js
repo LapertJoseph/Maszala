@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {NavLink } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -19,6 +19,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import ButtonSubmit from '../button';
+import axios from 'axios';
 
 const drawerWidth = 240;
 
@@ -68,6 +70,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function Layout() {
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -78,6 +81,18 @@ export default function Layout() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleClick = async () => {
+    try {
+      const result = await axios.get('http://localhost:8000/api/auth/logout')
+      console.log(result);
+      if (result.status === 200) {
+        navigate('/');
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -131,7 +146,7 @@ export default function Layout() {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Trash', 'Spam', <ButtonSubmit value='Logout' onClick={handleClick}/>].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
