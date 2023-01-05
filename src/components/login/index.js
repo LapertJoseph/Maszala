@@ -15,7 +15,15 @@ export default function InputForm(props) {
       noValidate
       autoComplete="off"
     >
-      <TextField fullWidth={props.fullWidth} onChange={props.onChange} label={props.label} variant="outlined" type={props.type} color={props.color}/>
+      <TextField 
+      fullWidth={props.fullWidth} 
+      onChange={props.onChange} 
+      label={props.label} 
+      variant={props.variant} 
+      type={props.type} 
+      color={props.color}
+      autoComplete={props.autoComplete}
+      />
     </Box>
   );
 }
