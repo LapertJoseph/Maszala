@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../src/components/home";
 import NotFound from "../src/components/notfound";
 import About from "./components/about";
-import InputForm from "./components/login";
+import InputForm from "./components/textfield";
 import "./App.css";
 
 function App() {
