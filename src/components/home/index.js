@@ -25,15 +25,19 @@ const Home = () => {
           label={"Email"}
           type={"email"}
           onChange={handleEmail}
-          color={"warning"}
+          color={"error"}
           fullWidth
+          autoComplete='true'
+          variant={'standard'}
         />
         <InputForm
           label={"Password"}
           type={"password"}
           onChange={handlePassword}
-          color={"warning"}
+          color={"error"}
           fullWidth
+          autoComplete='true'
+          variant={'standard'}
         />
         <ButtonSubmit onClick={handleClick} value={"Envoyer"} />
         </div>
