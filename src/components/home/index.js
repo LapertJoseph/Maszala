@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import InputForm from "../../ui/textfield";
 import ButtonSubmit from "../button";
 import "./styles.css";
 import axios from "axios";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [passwordHash, setPassword] = useState("");
   const [user, setUser] = useState();
@@ -22,20 +24,16 @@ const Home = () => {
       setUser(result.data.data);
     } catch (error) {
       console.log(error.message);
-    }
-    if(user){
-      setMessage("Vous êtes connecté");
-      setTimeout(() => {
-        setMessage('');
-      }, 5000)
-    }else {
       setMessage("Email et/ou Password invalide");
-      setTimeout(() => {
-        setMessage('');
-      }, 5000)
     }
     console.log(user);
   };
+
+  useEffect(() => {
+    if(user){
+      navigate('/layout');
+    }
+  })
 
   return (
       <div className="background-image">
