@@ -133,8 +133,8 @@ export default function Layout() {
         </DrawerHeader>
         <Divider />
         <List>
-          {[<NavLink to='/'>Home</NavLink>, 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          {[<NavLink to='/'>Home</NavLink>, <NavLink to='/about'>A Propos</NavLink>, 'Send email', 'Drafts'].map((text, index) => (
+            <ListItem key={index} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -147,7 +147,7 @@ export default function Layout() {
         <Divider />
         <List>
           {['Trash', 'Spam', <ButtonSubmit value='Logout' onClick={handleClick}/>].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key={index} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
