@@ -20,7 +20,7 @@ const Home = () => {
   };
   const handleLogin = async () => {
     try {
-      const result = await axios.post('http://localhost:8000/api/auth', {email, passwordHash});
+      const result = await axios.post('http://localhost:8000/user/auth', {email, passwordHash});
       setUser(result);
     } catch (error) {
       console.log(error.message);

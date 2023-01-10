@@ -84,7 +84,7 @@ export default function Layout() {
 
   const handleClick = async () => {
     try {
-      const result = await axios.get('http://localhost:8000/api/auth/logout')
+      const result = await axios.get('http://localhost:8000/user/auth/logout')
       console.log(result.data.data);
       if (result.status === 200) {
         navigate('/');
