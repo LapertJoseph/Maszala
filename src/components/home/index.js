@@ -21,7 +21,8 @@ const Home = () => {
   const handleLogin = async () => {
     try {
       const result = await axios.post('http://localhost:8000/api/auth', {email, passwordHash});
-      setUser(result.data.data);
+      console.log("This is the turboConsoleLog ~ file: index.js:29 ~ handleLogin ~ result.data.data", result);
+      setUser(result);
     } catch (error) {
       console.log(error.message);
       setMessage("Email et/ou Password invalide");
