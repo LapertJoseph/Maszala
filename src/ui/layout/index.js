@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import * as React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -85,7 +85,7 @@ export default function Layout() {
   const handleClick = async () => {
     try {
       const result = await axios.get('http://localhost:8000/api/auth/logout')
-      console.log(result);
+      console.log(result.data.data);
       if (result.status === 200) {
         navigate('/');
       }
