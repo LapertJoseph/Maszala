@@ -1,4 +1,3 @@
-import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import FormRegister from "./components/Register";
 import Login from "./components/Login";
@@ -8,18 +7,18 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import MiniDrawer from "./components/Ui/Overview";
+import About from "./components/about";
+import Home from "./components/home";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route
-          path="/"
-          element={<Home title="Bienvenue sur la page de Maszala" />}
-        />
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<MiniDrawer />} />
         <Route path="/register" element={<FormRegister />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/card"
           element={
