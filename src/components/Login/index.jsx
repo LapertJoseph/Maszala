@@ -2,10 +2,11 @@ import "../Register/style.css";
 import React, { useState } from "react";
 import FieldText from "../Ui/TextField";
 import BasicButtons from "../Ui/Button";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [passwordHash, setPassword] = useState("");
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -13,9 +14,14 @@ const Login = () => {
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(name, email, password);
+    try {
+      const result = await axios.post('http://localhost:8000/user/auth', {email, passwordHash});
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
