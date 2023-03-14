@@ -4,7 +4,7 @@ import FieldText from "../../ui/textfield";
 import BasicButtons from "../../ui/button";
 // import axios from "axios";
 
-import "../register/style.css";
+import "../register/style.css"
 
 const Login = () => {
   
