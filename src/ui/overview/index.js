@@ -99,6 +99,7 @@ export default function MiniDrawer() {
 
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
@@ -118,6 +119,10 @@ export default function MiniDrawer() {
       navigate("/");
     }
   };
+
+  const handleClickcard1 = () => {
+    setExpanded(!expanded);
+  }
 
   return (
     <div className="bg-overview">
@@ -239,8 +244,9 @@ export default function MiniDrawer() {
               title="Shrimp and Chorizo Paella"
               subheader="September 14, 2016"
               info="This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like."
-              image="/src/assets/paella.jpg"
+              image="src/assets/paella.jpg"
               alt="Paella dish"
+              value="Lorem"
             />
             <RecipeReviewCard
               title="Noodles"
@@ -248,6 +254,7 @@ export default function MiniDrawer() {
               info="Noodles are a type of food made from unleavened dough that is typically cooked in boiling water."
               image="/src/assets/noodles.jpg"
               alt="Noodle dish"
+              value="Lorem 2"
             />
           </div>
         </Box>
