@@ -1,0 +1,15 @@
+.container-about {
+  width: 100%;
+  background-color: purple;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container-left-about {
+  width: 50%;
+  background-color: blue;
+}
+.container-right-about {
+  width: 50%;
+  background-color: red;
+}

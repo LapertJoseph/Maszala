@@ -1,0 +1,13 @@
+.bg-overview {
+  height: 100vh;
+  background-image: url(/src/assets/kitchen.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container-card-overview {
+  width: 95vw;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
