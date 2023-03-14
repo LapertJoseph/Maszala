@@ -20,9 +20,9 @@ const AuthContextProvider = ({ children }) => {
    * @param {object} param0 Email and password
    * @returns {void}
    */
-  const login = async ({ email, password }) => {
+  const login = async ({ email, passwordHash }) => {
     try {
-      const result = await XhttpRequest.post("/user/auth", { email, password });
+      const result = await XhttpRequest.post("/user/auth", { email, passwordHash });
       if (result && result.data.success === true) {
         setToken(result.data.token);
         localStorage.setItem("token", result.data.token);
@@ -44,8 +44,8 @@ const AuthContextProvider = ({ children }) => {
   const logout = async () => {
     try {
       await XhttpRequest.get("/user/auth/logout");
-      setUser();
       localStorage.clear();
+      setUser();
       navigate("/");
     } catch (error) {
       console.log(error.message);

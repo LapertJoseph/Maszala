@@ -3,6 +3,7 @@ import { useAuth } from "../../context";
 import BasicButtons from "../../ui/button";
 
 const Logout = () => {
+
   const { logout } = useAuth();
 
   const handleLogout = async () => {
@@ -15,7 +16,7 @@ const Logout = () => {
 
   return (
     <div>
-      <BasicButtons label="Logout" onClick={handleLogout} />
+      <BasicButtons label="Logout" onClick={handleLogout} type='onClick'/>
     </div>
   );
 };

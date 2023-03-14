@@ -15,20 +15,20 @@ const Login = () => {
   const [passwordHash, setPasswordHash] = useState("");
 
   const handleChangeEmail = (e) => {
+    e.preventDefault();
     setEmail(e.target.value);
-    console.log(email);
   };
 
   const handleChangePassword = (e) => {
+    e.preventDefault();
     setPasswordHash(e.target.value);
-    console.log(passwordHash);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       // const result = await axios.post("http://localhost:8000/user/auth", {email, passwordHash});
-      await login({email ,passwordHash});
-      console.log(email, passwordHash);
+      await login({ email, passwordHash });
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +36,7 @@ const Login = () => {
 
   // ternary operation to check all informations input
   useEffect(() => {
-    (email !== "") && (passwordHash !== "") ? setDisabled(false) : setDisabled(true);
+    email !== "" && passwordHash !== "" ? setDisabled(false) : setDisabled(true);
   }, [email, passwordHash]);
 
   return (

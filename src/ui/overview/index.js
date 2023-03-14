@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -22,6 +21,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import RecipeReviewCard from "../card";
 import BasicButtons from "../button";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context";
+
 
 import "./style.css";
 
@@ -93,6 +94,9 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer() {
+
+  const { logout } = useAuth();
+
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -107,11 +111,11 @@ export default function MiniDrawer() {
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:8000/user/auth/logout");
+      await logout();
     } catch (error) {
       console.log(error.message);
     } finally {
-      navigate("/login");
+      navigate("/");
     }
   };
 
