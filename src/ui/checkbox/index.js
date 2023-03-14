@@ -8,8 +8,10 @@ export default function Checkboxes(props) {
   return (
     <FormGroup>
       <FormControlLabel
-        control={<Checkbox defaultChecked />}
+        control={<Checkbox/>}
         label={props.label}
+        checked={props.checked}
+        onChange={props.onChange}
       />
     </FormGroup>
   );
@@ -17,4 +19,6 @@ export default function Checkboxes(props) {
 
 Checkboxes.propTypes = {
   label: PropTypes.string,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func
 };
