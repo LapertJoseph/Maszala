@@ -95,5 +95,4 @@ RecipeReviewCard.propTypes = {
   image: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   value: PropTypes.string,
-  onClick: PropTypes.func.isRequired
 };

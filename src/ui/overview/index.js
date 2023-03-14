@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -20,9 +22,6 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import RecipeReviewCard from "../card";
 import BasicButtons from "../button";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context";
-
 
 import "./style.css";
 
@@ -94,12 +93,10 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer() {
-
   const { logout } = useAuth();
 
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
-  const [expanded, setExpanded] = React.useState(false);
+  const [open, setOpen] = useState(true);
   const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
@@ -120,15 +117,15 @@ export default function MiniDrawer() {
     }
   };
 
-  const handleClickcard1 = () => {
-    setExpanded(!expanded);
-  }
-
   return (
     <div className="bg-overview">
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar position="fixed" open={open}>
+        <AppBar
+          position="fixed"
+          open={open}
+          sx={{ backgroundColor: "#362a21" }}
+        >
           <Toolbar>
             <IconButton
               color="inherit"
@@ -146,13 +143,30 @@ export default function MiniDrawer() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ fontWeight: "bold" }}
+              sx={{ fontWeight: "bold", color: "#b3662d" }}
             >
-              Maszala
+              Maszala©
             </Typography>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer
+          variant="permanent"
+          open={open}
+          sx={{
+            width: drawerWidth,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              boxSizing: "border-box",
+            },
+          }}
+          PaperProps={{
+            sx: {
+              backgroundColor: "#362a21",
+              color: "#fff",
+            },
+          }}
+        >
           <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
