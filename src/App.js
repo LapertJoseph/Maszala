@@ -6,6 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Login from "./components/login";
 import Logout from "./components/logout";
 import MiniDrawer from "./ui/overview";
+import FormRegister from "./components/register";
 import "react-notifications-component/dist/theme.css";
 import theme from "./ui/theme";
 
@@ -41,6 +42,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="*" element={<Login />} />
+            <Route path="/register" element={<FormRegister />} />
           </Routes>
         </ThemeProvider>
       </div>

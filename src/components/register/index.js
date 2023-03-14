@@ -1,8 +1,9 @@
 import "./style.css";
 import React, { useState } from "react";
-import FieldText from "../Ui/TextField";
-import Checkboxes from "../Ui/CheckBox";
-import BasicButtons from "../Ui/Button";
+import { Link } from 'react-router-dom';
+import FieldText from "../../ui/textfield";
+import Checkboxes from "../../ui/checkbox";
+import BasicButtons from "../../ui/button";
 
 const FormRegister = () => {
   const [name, setName] = useState("");
@@ -26,17 +27,15 @@ const FormRegister = () => {
   return (
     <div className="container-page">
       <div className="container-left">
-        <h1 className="background-title">Welcome to Devias Kit PRO</h1>
+        <h1 className="background-title">Welcome to Mazsala Kitchen App, Best place to eat with family</h1>
         <p className="txt-register">
-          A professional kit that comes with ready-to-use MUI components
-          developed with one common goal in mind, help you build faster &
-          beautiful applications.
+        A professional gastronomy kitchen that comes with tastes.
         </p>
-        <p className="txt2-register">Join 6,000+ forward-thinking companies</p>
+        <p className="txt2-register">Join 6,000+ subscriber</p>
       </div>
       <div className="container-right">
         <h2>Register</h2>
-        <p>Already have an account ? Log in</p>
+        <p>Already have an account ?  &rarr; <Link to="/login">Log in</Link></p>
         <FieldText label={"Name"} onChange={handleChangeName} type={"text"} />
         <FieldText
           label={"Email"}

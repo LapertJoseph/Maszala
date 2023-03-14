@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { useAuth } from "../../context";
 import FieldText from "../../ui/textfield";
 import BasicButtons from "../../ui/button";
-// import axios from "axios";
 
 import "../register/style.css"
 
@@ -27,7 +27,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const result = await axios.post("http://localhost:8000/user/auth", {email, passwordHash});
       await login({ email, passwordHash });
     } catch (error) {
       console.log(error);
@@ -52,7 +51,7 @@ const Login = () => {
       </div>
       <div className="container-right">
         <h2>Log in</h2> <br />
-        <p>Don't have an account ? Register</p> <br />
+        <p>Don't have an account ? &rarr; <Link to="/register">Register</Link></p> <br />
         <FieldText
           label={"Email"}
           onChange={handleChangeEmail}
