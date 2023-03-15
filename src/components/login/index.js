@@ -13,6 +13,7 @@ const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const [email, setEmail] = useState("");
   const [passwordHash, setPasswordHash] = useState("");
+  const [error, setError] = useState(true);
 
   const handleChangeEmail = (e) => {
     e.preventDefault();
@@ -38,6 +39,14 @@ const Login = () => {
     email !== "" && passwordHash !== "" ? setDisabled(false) : setDisabled(true);
   }, [email, passwordHash]);
 
+  useEffect(() => {
+    email !== "" ? setError(false) : setError(true);
+  }, [email])
+
+  useEffect(() => {
+    passwordHash !== "" ? setError(false) : setError(true);
+  }, [passwordHash])
+
   return (
     <div className="container-page">
       <div className="container-left">
@@ -56,12 +65,14 @@ const Login = () => {
           label={"Email"}
           onChange={handleChangeEmail}
           type={"email"}
+          error={error}
         />
         <br />
         <FieldText
           label={"Password"}
           onChange={handleChangePassword}
           type={"password"}
+          error={error}
         />
         <br />
         <BasicButtons label={"submit"} onClick={handleSubmit} disabled={disabled}/>
