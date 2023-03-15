@@ -11,13 +11,14 @@ export default function FieldText(props) {
         "& > :not(style)": { width: "25ch" },
       }}
       noValidate
-      autoComplete="off"
+      autoComplete="on"
     >
       <TextField
         label={props.label}
         variant="outlined"
         onChange={props.onChange}
         type={props.type}
+        error={props.error}
       />
     </Box>
   );
@@ -27,4 +28,5 @@ FieldText.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string,
+  error: PropTypes.bool
 };
