@@ -4,7 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-
+schema.sql
+seed.sql
 # testing
 /coverage
 
